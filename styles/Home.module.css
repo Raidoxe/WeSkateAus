@@ -122,3 +122,22 @@
 .visit:active {
   background-color: #3e4e4e;
 }
+
+.spinBoard {
+  background-color: white;
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.skateAnim {
+  width: auto;
+  height: 400px;
+  margin-left: 110px;
+}
+
+.qoute {
+  margin-left: 50%;
+}
