@@ -1,34 +1,32 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export default function Home() {
 
+  const scrollWeightAmount = 4;
   const [imageSequence, setImageSequence] = useState<number>(1);
   //const [scrollPos, setScrollPos] = useState<number>(0);
   const [scrollWeight, setScrollWeight] = useState<number>(0);
 
-  const scroll = (event: Event) => {
+  const scroll = useCallback((event: Event) => {
     //setScrollPos(window.scrollY);
     //console.log('fired');
-    setScrollWeight(scrollWeight + 1);
-
-    if(scrollWeight >= 4) {
-
-      setImageSequence(imageSequence + 1);
+    console.log('weight is '+scrollWeight);
+    if(scrollWeight >= scrollWeightAmount) {
       setScrollWeight(0);
-
-      //console.log('run');
+    } else {
+      setScrollWeight(currentScrollWeight => currentScrollWeight + 1);
     }
-  }
+  }, [setScrollWeight, scrollWeight]);
 
    useEffect(() => {
     window.addEventListener('mousewheel', scroll);
     return () => {
       window.removeEventListener('mousewheel', scroll);
     };
-  }, []);
+  }, [scroll]);
 
   useEffect(() => {
     //console.log(imageSequence);
@@ -38,6 +36,15 @@ export default function Home() {
     }*/
 
   });
+
+  useEffect(() => {
+    if(scrollWeight >= (scrollWeightAmount - 1)) {
+      if(imageSequence < 60) {
+        setImageSequence(currentImageSequence => currentImageSequence + 1);
+      }
+    }
+    console.log(scrollWeight);
+  }, [setImageSequence, scrollWeight]);
   
 
   const click = () => {
@@ -89,4 +96,10 @@ export default function Home() {
     </div>
   )
 }
-//<div className={styles.cropBottom} />
+
+
+export async function getStaticProps() {
+  for(let i = 0; i < 60; i++) {
+    const 
+  }
+}
