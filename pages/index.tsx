@@ -73,7 +73,7 @@ export default function Home() {
         </div>
         <div className={styles.board2}>
           <img src="/skateboardTop.png" className={styles.skateboardTop}/>
-          <p className={styles.boardDesc}>Proffesionally shaped, structuraly sound. Made for you</p>
+          <p className={styles.boardDesc}>Profesionally shaped, structurally sound. Made for you</p>
         </div>
         <div className={styles.board3}>
           <img src="/skateboardBottom2.png" className={styles.skateboardBottom2}/>
@@ -98,8 +98,8 @@ export default function Home() {
 }
 
 
-export async function getStaticProps() {
+/*export async function getStaticProps() {
   for(let i = 0; i < 60; i++) {
     const 
   }
-}
+}*/
